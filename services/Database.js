@@ -34,6 +34,23 @@ export async function createTables() {
   }
 }
 
+async function executeSelect(query, query_params = []) {
+  const conn = await getConnection();
+
+  try {
+    return await conn.getAllAsync(query, query_params);
+  } finally {
+    await conn.closeAsync();
+  }
+}
+
+export async function getNumberOfQuestions() {
+  const query = "SELECT COUNT(id) AS 'numberOfQuestions' FROM questions";
+  let response = await executeSelect(query);
+
+  return response[0].numberOfQuestions;
+}
+
 export async function insertTheme(theme) {
   var query = "INSERT INTO themes (name) VALUES (?)";
   var conn = await getConnection();
