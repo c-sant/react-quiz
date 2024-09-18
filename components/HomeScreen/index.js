@@ -1,8 +1,17 @@
 import { View, Text } from "react-native";
 import styles from "./styles";
 import HomeScreenButton from "../HomeScreenButton";
+import { getNumberOfQuestions } from "../../services/Database";
 
-function navigateIfHaveQuestions() {}
+async function navigateIfHaveQuestions() {
+  let numberOfQuestions = await getNumberOfQuestions();
+
+  if (numberOfQuestions > 0) {
+    // navega para o jogo
+  } else {
+    // continua na mesma tela e emite um alerta
+  }
+}
 
 export default function HomeScreen({ navigation }) {
   return (
