@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import styles from "./styles";
-import HomeScreenButton from "../HomeScreenButton";
+import FlowButton from "../FlowButton";
 import { getNumberOfQuestions } from "../../services/Database";
 
 async function navigateIfHaveQuestions() {
@@ -18,8 +18,8 @@ export default function HomeScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.title}>Quiz Massa</Text>
       <View>
-        <HomeScreenButton text={"JOGAR"} onPress={navigateIfHaveQuestions} />
-        <HomeScreenButton text={"PERGUNTAS"} />
+        <FlowButton text={"JOGAR"} onPress={navigateIfHaveQuestions} />
+        <FlowButton text={"PERGUNTAS"} onPress={() => navigation.navigate("Questions")} />
       </View>
     </View>
   );
