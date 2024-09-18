@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#252c49",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
   },
   title: {
     color: "#fff",
