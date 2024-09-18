@@ -11,6 +11,13 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     fontSize: 30
+  },
+  questionList: {
+    backgroundColor: "#021526",
+    height: "60%",
+    width: "90%",
+    borderRadius: 15,
+    margin: 10,
   }
 });
 
