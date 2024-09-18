@@ -9,7 +9,8 @@ export async function createTables() {
     CREATE TABLE IF NOT EXISTS themes
     (
       id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL
+      name TEXT NOT NULL,
+      color TEXT NOT NULL
     );
 
     CREATE TABLE IF NOT EXISTS questions
