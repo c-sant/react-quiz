@@ -19,7 +19,10 @@ export default function HomeScreen({ navigation }) {
       <Text style={styles.title}>Quiz Massa</Text>
       <View>
         <FlowButton text={"JOGAR"} onPress={navigateIfHaveQuestions} />
-        <FlowButton text={"PERGUNTAS"} onPress={() => navigation.navigate("Questions")} />
+        <FlowButton
+          text={"PERGUNTAS"}
+          onPress={() => navigation.navigate("Questions")}
+        />
       </View>
     </View>
   );

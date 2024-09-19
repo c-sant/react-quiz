@@ -1,24 +1,16 @@
 import { StyleSheet } from "react-native";
+import commonStyles from "../../styles";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#252c49",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 30
-  },
+const componentStyles = StyleSheet.create({
   questionList: {
-    backgroundColor: "#021526",
+    backgroundColor: "#1B2136",
     height: "60%",
     width: "90%",
     borderRadius: 15,
     margin: 10,
-  }
+  },
 });
+
+const styles = StyleSheet.flatten([commonStyles, componentStyles]);
 
 export default styles;
