@@ -1,5 +1,6 @@
 import { Text, View } from "react-native";
 import styles from "./styles";
+import ThemeSelector from "../ThemeSelector";
 
 export default function QuestionRegistrationScreen() {
   return (
@@ -8,6 +9,7 @@ export default function QuestionRegistrationScreen() {
       <View style={styles.formSpace}>
         <View style={styles.row}>
           <Text style={styles.inputLabel}>Tema</Text>
+          <ThemeSelector />
         </View>
       </View>
     </View>

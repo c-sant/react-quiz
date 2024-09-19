@@ -5,12 +5,11 @@ async function getConnection() {
 }
 
 export async function createTables() {
-  const query = `
+  var query = `
     CREATE TABLE IF NOT EXISTS themes
     (
       id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL,
-      color TEXT NOT NULL
+      name TEXT NOT NULL
     );
 
     CREATE TABLE IF NOT EXISTS questions
@@ -26,7 +25,7 @@ export async function createTables() {
     )
   `;
 
-  const conn = await getConnection();
+  var conn = await getConnection();
 
   try {
     await conn.execAsync(query);
@@ -36,7 +35,7 @@ export async function createTables() {
 }
 
 async function executeSelect(query, query_params = []) {
-  const conn = await getConnection();
+  var conn = await getConnection();
 
   try {
     return await conn.getAllAsync(query, query_params);
@@ -46,10 +45,15 @@ async function executeSelect(query, query_params = []) {
 }
 
 export async function getNumberOfQuestions() {
-  const query = "SELECT COUNT(id) AS 'numberOfQuestions' FROM questions";
+  var query = "SELECT COUNT(id) AS 'numberOfQuestions' FROM questions";
   let response = await executeSelect(query);
 
   return response[0].numberOfQuestions;
+}
+
+export async function getThemes() {
+  var query = "SELECT id, name FROM themes";
+  return await executeSelect(query);
 }
 
 export async function insertTheme(theme) {
@@ -58,7 +62,7 @@ export async function insertTheme(theme) {
 
   try {
     result = await conn.runAsync(query, [theme.name]);
-    return result.changes == 1;
+    return result.changes === 1;
   } finally {
     await conn.closeAsync();
   }

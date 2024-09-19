@@ -14,6 +14,8 @@ const componentStyles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   inputLabel: {
     color: "#fff",
