@@ -29,11 +29,10 @@ export default function ThemeSelector() {
       });
       if (success) {
         fetchThemes();
+        setValue(newTheme.label);
       }
     }
   }
-
-  DropDownPicker.setTheme("DARK");
 
   return (
     <View>
