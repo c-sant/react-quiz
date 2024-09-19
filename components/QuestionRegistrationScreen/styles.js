@@ -11,6 +11,7 @@ const componentStyles = StyleSheet.create({
     height: "60%",
     width: "90%",
     margin: 15,
+    justifyContent: "space-evenly",
   },
   row: {
     flexDirection: "row",
@@ -20,6 +21,10 @@ const componentStyles = StyleSheet.create({
   inputLabel: {
     color: "#fff",
     fontSize: 20,
+  },
+  textInput: {
+    backgroundColor: "#1B2136",
+    width: 300,
   },
 });
 
