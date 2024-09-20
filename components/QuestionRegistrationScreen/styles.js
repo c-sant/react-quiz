@@ -24,7 +24,16 @@ const componentStyles = StyleSheet.create({
   },
   textInput: {
     backgroundColor: "#1B2136",
-    width: 300,
+    width: 200,
+    height: 50,
+    borderColor: "#000",
+    borderWidth: 1,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    color: "#fff",
   },
 });
 

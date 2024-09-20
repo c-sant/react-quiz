@@ -44,6 +44,17 @@ async function executeSelect(query, query_params = []) {
   }
 }
 
+async function executeQuery(query, query_params = []) {
+  var conn = await getConnection();
+
+  try {
+    result = await conn.runAsync(query, query_params);
+    return result.changes === 1;
+  } finally {
+    await conn.closeAsync();
+  }
+}
+
 export async function getNumberOfQuestions() {
   var query = "SELECT COUNT(id) AS 'numberOfQuestions' FROM questions";
   let response = await executeSelect(query);
@@ -58,12 +69,22 @@ export async function getThemes() {
 
 export async function insertTheme(theme) {
   var query = "INSERT INTO themes (name) VALUES (?)";
-  var conn = await getConnection();
+  var query_params = [theme.name];
 
-  try {
-    result = await conn.runAsync(query, [theme.name]);
-    return result.changes === 1;
-  } finally {
-    await conn.closeAsync();
-  }
+  return await executeQuery(query, query_params);
+}
+
+export async function insertQuestion(question) {
+  var query =
+    "INSERT INTO questions (theme_id, question, answer, alternative_1, alternative_2, alternative_3) VALUES (?, ?, ?, ?, ?, ?)";
+  var query_params = [
+    question.theme_id,
+    question.question,
+    question.answer,
+    question.alternative_1,
+    question.alternative_2,
+    question.alternative_3,
+  ];
+
+  return await executeQuery(query, query_params);
 }

@@ -4,7 +4,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { getThemes, insertTheme } from "../../services/Database";
 import styles from "./styles";
 
-export default function ThemeSelector() {
+export default function ThemeSelector({ theme, setTheme }) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([]);
@@ -29,19 +29,21 @@ export default function ThemeSelector() {
       });
       if (success) {
         fetchThemes();
-        setValue(newTheme.label);
+        setTheme(newTheme.label);
       }
     }
   }
+
+  DropDownPicker.setTheme("DARK");
 
   return (
     <View>
       <DropDownPicker
         open={open}
-        value={value}
+        value={theme}
         items={items}
         setOpen={setOpen}
-        setValue={setValue}
+        setValue={setTheme}
         setItems={setItems}
         placeholder={"Selecione um tema"}
         searchable={true}
