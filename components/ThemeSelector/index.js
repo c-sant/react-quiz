@@ -6,7 +6,6 @@ import styles from "./styles";
 
 export default function ThemeSelector({ theme, setTheme }) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
   const [items, setItems] = useState([]);
 
   async function fetchThemes() {
@@ -24,13 +23,9 @@ export default function ThemeSelector({ theme, setTheme }) {
 
   async function handleAddCustomItem(newTheme) {
     if (!items.map((theme) => theme.label).includes(newTheme.label)) {
-      const success = await insertTheme({
+      await insertTheme({
         name: newTheme.label,
       });
-      if (success) {
-        fetchThemes();
-        setTheme(newTheme.label);
-      }
     }
   }
 
