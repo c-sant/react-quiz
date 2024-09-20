@@ -8,9 +8,9 @@ const componentStyles = StyleSheet.create({
     fontSize: 35,
   },
   formSpace: {
-    height: "60%",
+    height: "55%",
     width: "90%",
-    margin: 15,
+    margin: 5,
     justifyContent: "space-evenly",
   },
   row: {

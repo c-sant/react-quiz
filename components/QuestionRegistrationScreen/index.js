@@ -5,7 +5,7 @@ import { useState } from "react";
 import FlowButton from "../FlowButton";
 import { insertQuestion } from "../../services/Database";
 
-export default function QuestionRegistrationScreen() {
+export default function QuestionRegistrationScreen({ navigation }) {
   const [theme, setTheme] = useState(null);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -93,6 +93,11 @@ export default function QuestionRegistrationScreen() {
         onPress={saveQuestion}
         backgroundColor="#29903B"
       />
+      <FlowButton
+        text="Voltar"
+        onPress={() => navigation.navigate("Questions")}
+        backgroundColor="#d5ad2a"
+      ></FlowButton>
     </View>
   );
 }
