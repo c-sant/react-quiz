@@ -48,7 +48,7 @@ async function executeQuery(query, query_params = []) {
   var conn = await getConnection();
 
   try {
-    result = await conn.runAsync(query, query_params);
+    const result = await conn.runAsync(query, query_params);
     return result.changes === 1;
   } finally {
     await conn.closeAsync();
@@ -74,6 +74,24 @@ export async function insertTheme(theme) {
   return await executeQuery(query, query_params);
 }
 
+export async function getQuestions() {
+  var query = `
+    SELECT
+      q.id,
+      t.name AS 'theme',
+      q.question,
+      q.answer,
+      q.alternative_1,
+      q.alternative_2,
+      q.alternative_3
+    FROM questions q
+    LEFT JOIN themes t
+    ON q.theme_id = t.id
+  `;
+
+  return await executeSelect(query);
+}
+
 export async function insertQuestion(question) {
   var query =
     "INSERT INTO questions (theme_id, question, answer, alternative_1, alternative_2, alternative_3) VALUES (?, ?, ?, ?, ?, ?)";
@@ -85,6 +103,13 @@ export async function insertQuestion(question) {
     question.alternative_2,
     question.alternative_3,
   ];
+
+  return await executeQuery(query, query_params);
+}
+
+export async function deleteQuestion(question_id) {
+  var query = "DELETE FROM questions WHERE id = ?";
+  var query_params = [question_id];
 
   return await executeQuery(query, query_params);
 }

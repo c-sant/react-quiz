@@ -8,6 +8,8 @@ const componentStyles = StyleSheet.create({
     width: "90%",
     borderRadius: 15,
     margin: 10,
+    paddingVertical: 10,
+    alignItems: "center",
   },
 });
 
