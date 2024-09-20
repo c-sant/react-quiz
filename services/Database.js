@@ -78,6 +78,7 @@ export async function getQuestions() {
   var query = `
     SELECT
       q.id,
+      t.id AS 'theme_id',
       t.name AS 'theme',
       q.question,
       q.answer,
@@ -110,6 +111,30 @@ export async function insertQuestion(question) {
 export async function deleteQuestion(question_id) {
   var query = "DELETE FROM questions WHERE id = ?";
   var query_params = [question_id];
+
+  return await executeQuery(query, query_params);
+}
+
+export async function updateQuestion(question) {
+  var query = `
+    UPDATE questions
+    SET
+      theme_id = ?,
+      question = ?,
+      answer = ?,
+      alternative_1 = ?,
+      alternative_2 = ?,
+      alternative_3 = ?
+    WHERE id = ?
+  `;
+  var query_params = [
+    question.theme_id,
+    question.question,
+    question.answer,
+    question.alternative_1,
+    question.alternative_2,
+    question.alternative_3,
+  ];
 
   return await executeQuery(query, query_params);
 }

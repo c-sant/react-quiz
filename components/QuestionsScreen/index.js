@@ -18,8 +18,6 @@ export default function QuestionsScreen({ navigation }) {
   }
 
   async function handleDeleteQuestion(question, id) {
-    console.log(question);
-    console.log(id);
     Alert.alert(
       "Apagar pergunta",
       `Você tem certeza de que quer apagar a pergunta selecionada (${question})?`,

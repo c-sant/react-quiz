@@ -11,10 +11,6 @@ function trimTextWithEllipsis(text, limit) {
 
 export default function QuestionCard({ data, onDeleteQuestion }) {
   let question = trimTextWithEllipsis(data.question, 17);
-  // let theme = trimTextWithEllipsis(data.theme, 17);
-
-  console.log(data.id);
-  console.log(question);
 
   return (
     <View style={styles.card}>
