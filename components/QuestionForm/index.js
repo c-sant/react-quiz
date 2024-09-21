@@ -45,6 +45,7 @@ export default function QuestionForm({
     };
 
     if (id) data["id"] = id;
+    console.log(data);
 
     // TO-DO VALIDAÇÃO: PRECISA CHECAR SE NÃO FALTA NADA (o ID só é necessário durante um update, no insert ele é gerado automaticamente pelo SQLite)
 
@@ -56,6 +57,8 @@ export default function QuestionForm({
     } else {
       // TO-DO: ADICIONAR TOAST AMARELO AVISANDO QUE NÃO FUNCIONOU A OPERAÇÃO
     }
+
+    onPressReturn();
   }
 
   return (

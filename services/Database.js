@@ -134,6 +134,7 @@ export async function updateQuestion(question) {
     question.alternative_1,
     question.alternative_2,
     question.alternative_3,
+    question.id,
   ];
 
   return await executeQuery(query, query_params);

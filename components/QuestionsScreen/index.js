@@ -13,8 +13,11 @@ export default function QuestionsScreen({ navigation }) {
 
   async function fetchQuestions() {
     const loadedQuestions = await getQuestions();
-    console.log(loadedQuestions);
     setQuestions(loadedQuestions);
+  }
+
+  function handleUpdateQuestion(data) {
+    navigation.navigate("QuestionEdit", { questionData: data });
   }
 
   async function handleDeleteQuestion(question, id) {
@@ -31,7 +34,6 @@ export default function QuestionsScreen({ navigation }) {
           onPress: async () => {
             await deleteQuestion(id);
             await fetchQuestions();
-            // Alert.alert("Sucesso", "A mensagem foi apagada.");
           },
         },
       ]
@@ -48,12 +50,12 @@ export default function QuestionsScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.title}>Perguntas</Text>
       <View style={styles.questionList}>
-        {/* Render questions here */}
         {questions &&
           questions.map((question, index) => (
             <QuestionCard
               key={index}
               data={question}
+              onUpdateQuestion={handleUpdateQuestion}
               onDeleteQuestion={handleDeleteQuestion}
             />
           ))}

@@ -5,7 +5,7 @@ const componentStyles = StyleSheet.create({
   title: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 35,
+    fontSize: 30,
   },
   formSpace: {
     height: "55%",

@@ -4,6 +4,7 @@ import { createTables } from "./services/Database";
 import HomeScreen from "./components/HomeScreen";
 import QuestionsScreen from "./components/QuestionsScreen";
 import QuestionRegistrationScreen from "./components/QuestionRegistrationScreen";
+import QuestionEditScreen from "./components/QuestionEditScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ export default function App() {
           name="QuestionRegistration"
           component={QuestionRegistrationScreen}
         />
+        <Stack.Screen name="QuestionEdit" component={QuestionEditScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -9,7 +9,11 @@ function trimTextWithEllipsis(text, limit) {
   return text;
 }
 
-export default function QuestionCard({ data, onDeleteQuestion }) {
+export default function QuestionCard({
+  data,
+  onDeleteQuestion,
+  onUpdateQuestion,
+}) {
   let question = trimTextWithEllipsis(data.question, 17);
 
   return (
@@ -20,7 +24,10 @@ export default function QuestionCard({ data, onDeleteQuestion }) {
       <View style={styles.cardBody}>
         <Text style={styles.cardBodyText}>{`Pergunta: ${question}`}</Text>
         <View style={styles.buttonRow}>
-          <TouchableOpacity style={styles.cardButton}>
+          <TouchableOpacity
+            style={styles.cardButton}
+            onPress={() => onUpdateQuestion(data)}
+          >
             <AntDesign name="edit" size={24} color="#f1f1f1" />
           </TouchableOpacity>
           <TouchableOpacity

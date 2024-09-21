@@ -5,11 +5,13 @@ export default function FlowButton({
   text,
   onPress,
   backgroundColor = "#219de2",
+  disabled = false,
 }) {
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor: backgroundColor }]}
       onPress={onPress}
+      disabled={disabled}
     >
       <Text style={styles.buttonLabel}>{text}</Text>
     </TouchableOpacity>
