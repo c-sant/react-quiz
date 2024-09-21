@@ -64,6 +64,11 @@ export default function QuestionsScreen({ navigation }) {
         text="+ Nova pergunta"
         onPress={() => navigation.navigate("QuestionRegistration")}
       ></FlowButton>
+      <FlowButton
+        text="Voltar"
+        onPress={() => navigation.navigate("Home")}
+        backgroundColor="#d5ad2a"
+      ></FlowButton>
     </View>
   );
 }
