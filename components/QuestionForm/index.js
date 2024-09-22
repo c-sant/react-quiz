@@ -3,6 +3,7 @@ import styles from "./styles";
 import ThemeSelector from "../ThemeSelector";
 import { useState } from "react";
 import FlowButton from "../FlowButton";
+import Toast from "react-native-toast-message";
 
 export default function QuestionForm({
   title,
@@ -53,9 +54,19 @@ export default function QuestionForm({
 
     if (success) {
       // TO-DO: ADICIONAR TOAST VERDE AVISANDO QUE FUNCIONOU A OPERAÇÃO NO BANCO
+      Toast.show({
+        type: 'success',
+        text1: 'Sucesso',
+        text2: 'Questão adicionada com sucesso!'
+      })
       clear();
     } else {
       // TO-DO: ADICIONAR TOAST AMARELO AVISANDO QUE NÃO FUNCIONOU A OPERAÇÃO
+      Toast.show({
+        type: 'info',
+        text1: 'Falha',
+        text2: 'Não foi possível inserir sua pergunta ao banco!'
+      })
     }
 
     onPressReturn();

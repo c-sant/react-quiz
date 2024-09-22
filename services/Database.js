@@ -57,9 +57,12 @@ async function executeQuery(query, query_params = []) {
 
 export async function getNumberOfQuestions() {
   var query = "SELECT COUNT(id) AS 'numberOfQuestions' FROM questions";
-  let response = await executeSelect(query);
-
-  return response[0].numberOfQuestions;
+  try{
+    let response = await executeSelect(query);
+    return response[0].numberOfQuestions;
+  }catch(err){
+    return 0
+  }
 }
 
 export async function getThemes() {

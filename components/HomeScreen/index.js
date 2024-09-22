@@ -11,7 +11,7 @@ export default function HomeScreen({ navigation }) {
 
   async function checkIfHasQuestions() {
     let numberOfQuestions = await getNumberOfQuestions();
-    setHasQuestions(numberOfQuestions > 0);
+    setHasQuestions(Number(numberOfQuestions) > 0);
   }
 
   // TO-DO: CONSERTAR O BUG QUE DESABILITA O BOTÃO JOGAR MESMO QUANDO HÁ PERGUNTAS
