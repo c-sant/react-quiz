@@ -5,6 +5,8 @@ import HomeScreen from "./components/HomeScreen";
 import QuestionsScreen from "./components/QuestionsScreen";
 import QuestionRegistrationScreen from "./components/QuestionRegistrationScreen";
 import QuestionEditScreen from "./components/QuestionEditScreen";
+import GameSettingsScreen from "./components/GameSettingsScreen";
+import GameScreen from "./components/GameScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,8 @@ export default function App() {
           component={QuestionRegistrationScreen}
         />
         <Stack.Screen name="QuestionEdit" component={QuestionEditScreen} />
+        <Stack.Screen name="GameSettings" component={GameSettingsScreen} />
+        <Stack.Screen name="Game" component={GameScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

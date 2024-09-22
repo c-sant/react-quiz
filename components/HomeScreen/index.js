@@ -14,6 +14,9 @@ export default function HomeScreen({ navigation }) {
     setHasQuestions(numberOfQuestions > 0);
   }
 
+  // TO-DO: CONSERTAR O BUG QUE DESABILITA O BOTÃO JOGAR MESMO QUANDO HÁ PERGUNTAS
+  // (Possible unhandled promise rejection)
+  // O BUG SOME SE VOCÊ ENTRA NA TELA DE PERGUNTAS E VOLTA AO MENU INICIAL
   useFocusEffect(
     React.useCallback(() => {
       checkIfHasQuestions();
@@ -27,7 +30,7 @@ export default function HomeScreen({ navigation }) {
         <FlowButton
           backgroundColor={hasQuestions ? "#219de2" : "#4d4d4d"}
           text={"JOGAR"}
-          onPress={() => console.log("is enabled")}
+          onPress={() => navigation.navigate("GameSettings")}
           disabled={!hasQuestions}
         />
         <FlowButton

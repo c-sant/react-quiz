@@ -4,16 +4,26 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { getThemes, insertTheme } from "../../services/Database";
 import styles from "./styles";
 
-export default function ThemeSelector({ theme, setTheme }) {
+export default function ThemeSelector({
+  theme,
+  setTheme,
+  searchable = true,
+  searchPlaceholder = "Buscar/Adicionar...",
+  addCustomItem = true,
+  includeAll = false,
+  onChangeValue = null,
+}) {
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState([]);
 
   async function fetchThemes() {
     const themes = await getThemes();
-    const dropdownItems = themes.map((theme) => ({
+    var dropdownItems = themes.map((theme) => ({
       label: theme.name,
       value: theme.id,
     }));
+
+    if (includeAll) dropdownItems.push({ label: "Todos", value: -1 });
     setItems(dropdownItems);
   }
 
@@ -41,9 +51,9 @@ export default function ThemeSelector({ theme, setTheme }) {
         setValue={setTheme}
         setItems={setItems}
         placeholder={"Selecione um tema"}
-        searchable={true}
-        searchPlaceholder={"Buscar/Adicionar..."}
-        addCustomItem={true}
+        searchable={searchable}
+        searchPlaceholder={searchPlaceholder}
+        addCustomItem={addCustomItem}
         onSelectItem={handleAddCustomItem}
         style={styles.dropdown}
         dropDownContainerStyle={styles.dropdownContainer}

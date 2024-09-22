@@ -93,6 +93,23 @@ export async function getQuestions() {
   return await executeSelect(query);
 }
 
+export async function getQuestionsOfTheme(theme_id) {
+  if (theme_id === -1) return await getQuestions();
+
+  var query = `
+    SELECT
+      id,
+      question,
+      answer,
+      alternative_1,
+      alternative_2,
+      alternative_3
+    FROM questions
+  `;
+
+  return await executeSelect(query);
+}
+
 export async function insertQuestion(question) {
   var query =
     "INSERT INTO questions (theme_id, question, answer, alternative_1, alternative_2, alternative_3) VALUES (?, ?, ?, ?, ?, ?)";
