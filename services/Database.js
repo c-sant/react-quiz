@@ -156,6 +156,10 @@ export async function updateQuestion(question) {
     question.alternative_3,
     question.id,
   ];
+  try{
+    return await executeQuery(query, query_params);
+  }catch(err){
+    return 0
+  }
 
-  return await executeQuery(query, query_params);
 }

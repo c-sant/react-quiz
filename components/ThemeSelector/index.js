@@ -37,6 +37,7 @@ export default function ThemeSelector({
         name: newTheme.label,
       });
     }
+    fetchThemes()
   }
 
   DropDownPicker.setTheme("DARK");
