@@ -9,6 +9,7 @@ export default function QuestionEditScreen({ route, navigation }) {
       title={"Edição de pergunta"}
       currentData={questionData}
       onSubmit={updateQuestion}
+      isUpdated={true}
       onPressReturn={() => navigation.navigate("Questions")}
     />
   );

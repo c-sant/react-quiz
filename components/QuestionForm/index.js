@@ -4,12 +4,14 @@ import ThemeSelector from "../ThemeSelector";
 import { useState } from "react";
 import FlowButton from "../FlowButton";
 import Toast from "react-native-toast-message";
+import { validateFields } from "../../utils/utils";
 
 export default function QuestionForm({
   title,
   currentData,
   onSubmit,
   onPressReturn,
+  isUpdated
 }) {
   const [id, setId] = useState(currentData?.id || null);
   const [theme, setTheme] = useState(currentData?.theme_id || null);
@@ -45,19 +47,58 @@ export default function QuestionForm({
       alternative_3: alternative3,
     };
 
-    if (id) data["id"] = id;
-    console.log(data);
+    if (isUpdated) data["id"] = id;
+    //console.log(data);
 
     // TO-DO VALIDAÇÃO: PRECISA CHECAR SE NÃO FALTA NADA (o ID só é necessário durante um update, no insert ele é gerado automaticamente pelo SQLite)
+    try{
+      validateFields('Tema', data.theme_id)
+      validateFields('Pergunta', data.question)
+      validateFields('Resposta', data.answer)
+      validateFields('Alternativa 1', data.alternative_1)
+      validateFields('Alternativa 2', data.alternative_2)
+      validateFields('Alternativa 3', data.alternative_3)
+    }catch(err){
+      Toast.show({
+        type: 'info',
+        text1: 'Campos obrigatórios',
+        text2: err
+      })
+      return;
+    }
+    
+    
+    
+
+    
+     
+
+    if(isEmpty(data.question) || isUndefined(data.question) || isNull(data.question)){
+      Toast.show({
+        type: 'info',
+        text1: 'Campos obrigatórios',
+        text2: 'A alternativa 2 é obrigatório!'
+      })
+      return;
+    }
+
+    if(isEmpty(data.question) || isUndefined(data.question) || isNull(data.question)){
+      Toast.show({
+        type: 'info',
+        text1: 'Campos obrigatórios',
+        text2: 'A alternativa 3 é obrigatório!'
+      })
+      return;
+    }
 
     let success = await onSubmit(data);
-
+    let message = isUpdated ? 'Atualizada' : 'Criada'
     if (success) {
       // TO-DO: ADICIONAR TOAST VERDE AVISANDO QUE FUNCIONOU A OPERAÇÃO NO BANCO
       Toast.show({
         type: 'success',
         text1: 'Sucesso',
-        text2: 'Questão adicionada com sucesso!'
+        text2: `Questão ${message} com sucesso!`
       })
       clear();
     } else {

@@ -6,6 +6,7 @@ export default function QuestionRegistrationScreen({ navigation }) {
     <QuestionForm
       title={"Cadastro de perguntas"}
       onSubmit={insertQuestion}
+      isUpdated={false}
       onPressReturn={() => navigation.navigate("Questions")}
     />
   );
