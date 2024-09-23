@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import Slider from "@react-native-community/slider";
 import styles from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function QuestionsSlider({
   numberOfQuestions,

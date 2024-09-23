@@ -1,7 +1,8 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import styles from "./styles";
 import { useEffect, useState } from "react";
 import FlowButton from "../FlowButton";
+import ResultCard from "../ResultCard";
 
 export default function ResultScreen({ route, navigation }) {
   const { responses } = route.params
@@ -29,23 +30,25 @@ export default function ResultScreen({ route, navigation }) {
     setResults(arrayResult)
   }
 
-  
-
   return  (
   <View style={styles.container}>
     <Text style={styles.title}>Resultados</Text>
     <Text style={styles.title}>Acertos/Total: {hits}/{numberQuestion}</Text>
     <View style={styles.result}>
+        <ScrollView style={styles.scrollableView} contentContainerStyle={styles.contentContainer}>
         {
             results && results.map((value, index) => (
-                <View style={{width: '100%', margin: 10}} key={index}>
-                    <Text style={{ color: '#fff', fontSize: 18}}>Questão: {value.question}</Text>
-                    <Text style={{ color: '#fff', fontSize: 18}}>Resposta Certa: {value.answer}</Text>
-                    <Text style={{ color: '#fff', fontSize: 18}}>Resposta Escolhida: {value.choice}</Text>
-                    <Text style={{ color: '#fff', fontSize: 18}}>Você { value.answer == value.choice ? 'acertou' : 'errou'}</Text>
-                </View>
+                    <ResultCard 
+                        question={value.question}
+                        answer={value.answer}
+                        choice={value.choice}
+                        isCorrect={value.answer == value.choice}
+                        key={index}
+                    />
+                
             ))
         }
+        </ScrollView>
 
     </View>
 

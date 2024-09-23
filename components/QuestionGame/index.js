@@ -3,8 +3,6 @@ import styles from "./styles";
 import React from "react";
 import { useEffect, useState } from "react";
 
-import { useFocusEffect } from "@react-navigation/native";
-
 export default function QuestionGame({ question, onResponse }) {
     const [options, setOptions] = useState()
     const [ key, setKey] = useState()
@@ -17,6 +15,10 @@ export default function QuestionGame({ question, onResponse }) {
         array.push(data.answer)
         array = shuffleArray(array)
         setOptions(array)
+
+        if(data["choice"]){
+            setKey(array.findIndex((element) => element == data["choice"]))
+        }
     }
 
     function shuffleArray(array) {
@@ -45,16 +47,19 @@ export default function QuestionGame({ question, onResponse }) {
     
   
   return  (
-    <View style={{ width: '100%', height: '100%', backgroundColor: "#1B2136"}}>
+    <View style={styles.content}>
         
         <View>
-            <Text style={{margin: 20, fontSize: 18, color: '#fff'}}>{question?.question}</Text>
+            <Text style={styles.titleQuestion}>{question?.question}</Text>
         </View>
 
-        <View style={{ width: '100%', justifyContent: 'center'}}>
+        <View style={styles.optionContainer}>
             { options && options.map((option, index) => (
-                <TouchableOpacity  key={index} style={{ margin: 10, padding: 20, borderColor: key == index ? '#03fcf0' : '#fff', borderWidth: 5, borderRadius: 5}} onPress={() => onclick(index)}>
-                    <Text style={{ color: '#fff' }}>{option}</Text>
+                <TouchableOpacity  
+                    key={index} 
+                    style={{ margin: 10, padding: 20, borderColor: key == index ? '#03fcf0' : '#fff', borderWidth: 5, borderRadius: 5}} 
+                    onPress={() => onclick(index)}>
+                    <Text style={styles.optionFont}>{option}</Text>
                 </TouchableOpacity>
                 
             ))}

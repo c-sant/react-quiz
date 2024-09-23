@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Alert } from "react-native";
+import { Text, View, Alert, ScrollView } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import FlowButton from "../FlowButton";
 import { useState } from "react";
@@ -50,6 +50,7 @@ export default function QuestionsScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.title}>Perguntas</Text>
       <View style={styles.questionList}>
+        <ScrollView style={styles.scrollableView} contentContainerStyle={styles.contentContainer}>
         {questions &&
           questions.map((question, index) => (
             <QuestionCard
@@ -59,6 +60,7 @@ export default function QuestionsScreen({ navigation }) {
               onDeleteQuestion={handleDeleteQuestion}
             />
           ))}
+        </ScrollView>
       </View>
       <FlowButton
         text="+ Nova pergunta"

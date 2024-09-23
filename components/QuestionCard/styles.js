@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     height: "15%",
     margin: 5,
     borderRadius: 5,
-    overflow: "hidden",
   },
   cardHeader: {
     backgroundColor: "#185422",

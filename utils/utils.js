@@ -16,10 +16,16 @@ function isUndefined(field, value){
     }
 }
 
+function isZero(field, value){
+    if(value == 0){
+        throw (`${field} não pode ser zero`)
+    }
+}
+
 function validateFields(field, value){
     isEmpty(field, value)
     isNull(field, value)
     isUndefined(field, value)
 }
 
-export { validateFields }
+export { validateFields, isZero }
