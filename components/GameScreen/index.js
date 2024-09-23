@@ -4,6 +4,7 @@ import QuestionGame from "../QuestionGame";
 import { useEffect, useState } from "react";
 import FlowButton from "../FlowButton";
 import { Bar } from "react-native-progress";
+import { BackHandler } from "react-native";
 
 export default function GameScreen({ route, navigation }) {
   const { gameData } = route.params
@@ -15,6 +16,11 @@ export default function GameScreen({ route, navigation }) {
     setCurrentQuestion(gameData[currentNumber-1])
     calculateProgress()
   }, [currentNumber])
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => {return true})
+    return () => BackHandler.removeEventListener('hardwareBackPress')
+  }, [])
 
   function calculateProgress(){
     setProgress(currentNumber/gameData.length)

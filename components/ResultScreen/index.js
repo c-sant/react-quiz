@@ -3,6 +3,7 @@ import styles from "./styles";
 import { useEffect, useState } from "react";
 import FlowButton from "../FlowButton";
 import ResultCard from "../ResultCard";
+import { BackHandler } from "react-native";
 
 export default function ResultScreen({ route, navigation }) {
   const { responses } = route.params
@@ -15,6 +16,11 @@ export default function ResultScreen({ route, navigation }) {
         onLoad(responses)
     }
   }, [responses])
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => {return true})
+    return () => BackHandler.removeEventListener('hardwareBackPress')
+  }, [])
 
   function onLoad(data){
     let hits = 0
@@ -34,7 +40,7 @@ export default function ResultScreen({ route, navigation }) {
   <View style={styles.container}>
     <Text style={styles.title}>Resultados</Text>
     <Text style={styles.title}>Acertos/Total: {hits}/{numberQuestion}</Text>
-    <Text style={styles.title}>% de Acerto: {(hits/numberQuestion) * 100}</Text>
+    <Text style={styles.title}>% de Acerto: {((hits/numberQuestion) * 100).toFixed(2)}</Text>
     <View style={styles.result}>
         <ScrollView style={styles.scrollableView} contentContainerStyle={styles.contentContainer}>
         {

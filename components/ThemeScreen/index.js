@@ -78,7 +78,7 @@ export default function ThemeScreen({ navigation }) {
         <ScrollView style={styles.scrollableView} contentContainerStyle={styles.contentContainer}>
         {themes &&
           themes.map((theme, index) => (
-            <View style={styles.card}>
+            <View style={styles.card} key={index}>
                 <TextInput style={styles.cardText} value={theme.name} onChangeText={(value) => onChangeTheme(index, value)}></TextInput>
                 <View style={styles.buttonRow}>
                     {/* Botão de Editar */}

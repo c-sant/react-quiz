@@ -21,7 +21,7 @@ export default function App() {
         <Stack.Screen name="Loading" component={LoadingComponent}/>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Questions" component={QuestionsScreen} />
-        <Stack.Screen name="Theme" component={ThemeScreen} />
+        <Stack.Screen name="Theme" component={ThemeScreen}/>
         <Stack.Screen
           name="QuestionRegistration"
           component={QuestionRegistrationScreen}

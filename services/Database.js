@@ -78,6 +78,7 @@ export async function insertTheme(theme) {
 }
 
 export async function deleteTheme(theme_id) {
+  await deleteQuestionByTheme(theme_id);
   var query = "DELETE FROM themes WHERE id = ?";
   var query_params = [theme_id];
 
@@ -190,4 +191,11 @@ export async function updateQuestion(question) {
     return 0
   }
 
+}
+
+async function deleteQuestionByTheme(theme_id){
+  var query = "DELETE FROM questions WHERE theme_id = ?";
+  var query_params = [theme_id];
+
+  return await executeQuery(query, query_params);
 }
