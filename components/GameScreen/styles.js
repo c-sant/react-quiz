@@ -15,9 +15,8 @@ const componentStyles = StyleSheet.create({
 
     footerBottom: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginRight: 10,
-        marginLeft: 10
+        justifyContent: 'space-around',
+        margin: 10
     },
     fontColor: {
         color: "#fff"
