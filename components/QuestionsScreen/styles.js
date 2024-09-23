@@ -4,7 +4,7 @@ import commonStyles from "../../styles";
 const componentStyles = StyleSheet.create({
   questionList: {
     backgroundColor: "#1B2136",
-    width: "90%",
+    height: 500,
     borderRadius: 15,
     margin: 10,
     paddingVertical: 10,
@@ -13,7 +13,6 @@ const componentStyles = StyleSheet.create({
     justifyContent: "center"
   },
   scrollableView: {
-    height: 400, // Altura fixa para a área scrollable
     padding: 10
   },
   contentContainer: {
