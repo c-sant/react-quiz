@@ -9,7 +9,7 @@ import FlowButton from "../FlowButton";
 export default function GameSettingsScreen({ navigation }) {
   const [questions, setQuestions] = useState([]);
   const [theme, setTheme] = useState(-1);
-  const [numberOfQuestions, setNumberOfQuestions] = useState(1);
+  const [numberOfQuestions, setNumberOfQuestions] = useState(0);
 
   async function fetchQuestions() {
     const loadedQuestions = await getQuestionsOfTheme(theme);
@@ -18,7 +18,7 @@ export default function GameSettingsScreen({ navigation }) {
 
   useEffect(() => {
     fetchQuestions();
-  }, []);
+  }, [theme]);
 
   return (
     <View style={styles.container}>
@@ -47,7 +47,7 @@ export default function GameSettingsScreen({ navigation }) {
       <FlowButton
         text="Jogar"
         onPress={() => {
-          navigation.navigate("Game");
+          navigation.navigate("Game", { gameData: questions});
         }}
         backgroundColor="#29903B"
       />

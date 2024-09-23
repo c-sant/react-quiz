@@ -1,7 +1,7 @@
 import * as SQLite from "expo-sqlite";
 
 async function getConnection() {
-  return await SQLite.openDatabaseAsync("quiz.db");
+  return await SQLite.openDatabaseAsync("quiz.db", { useNewConnection: true});
 }
 
 export async function createTables() {
@@ -45,9 +45,9 @@ async function executeSelect(query, query_params = []) {
 }
 
 async function executeQuery(query, query_params = []) {
-  var conn = await getConnection();
-
+  
   try {
+    var conn = await getConnection();
     const result = await conn.runAsync(query, query_params);
     return result.changes === 1;
   } finally {
@@ -98,6 +98,7 @@ export async function getQuestions() {
 
 export async function getQuestionsOfTheme(theme_id) {
   if (theme_id === -1) return await getQuestions();
+  var query_params = [theme_id]
 
   var query = `
     SELECT
@@ -108,9 +109,10 @@ export async function getQuestionsOfTheme(theme_id) {
       alternative_2,
       alternative_3
     FROM questions
+    WHERE theme_id = ?
   `;
 
-  return await executeSelect(query);
+  return await executeSelect(query, query_params);
 }
 
 export async function insertQuestion(question) {

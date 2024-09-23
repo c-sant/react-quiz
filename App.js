@@ -9,6 +9,7 @@ import GameSettingsScreen from "./components/GameSettingsScreen";
 import GameScreen from "./components/GameScreen";
 import Toast from 'react-native-toast-message';
 import LoadingComponent from "./components/LoadingComponent";
+import ResultScreen from "./components/ResultScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ export default function App() {
         <Stack.Screen name="QuestionEdit" component={QuestionEditScreen} />
         <Stack.Screen name="GameSettings" component={GameSettingsScreen} />
         <Stack.Screen name="Game" component={GameScreen} />
+        <Stack.Screen name="Result" component={ResultScreen} />
       </Stack.Navigator>
       <Toast />
     </NavigationContainer>

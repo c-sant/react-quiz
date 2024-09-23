@@ -66,30 +66,7 @@ export default function QuestionForm({
       })
       return;
     }
-    
-    
-    
-
-    
-     
-
-    if(isEmpty(data.question) || isUndefined(data.question) || isNull(data.question)){
-      Toast.show({
-        type: 'info',
-        text1: 'Campos obrigatórios',
-        text2: 'A alternativa 2 é obrigatório!'
-      })
-      return;
-    }
-
-    if(isEmpty(data.question) || isUndefined(data.question) || isNull(data.question)){
-      Toast.show({
-        type: 'info',
-        text1: 'Campos obrigatórios',
-        text2: 'A alternativa 3 é obrigatório!'
-      })
-      return;
-    }
+  
 
     let success = await onSubmit(data);
     let message = isUpdated ? 'Atualizada' : 'Criada'

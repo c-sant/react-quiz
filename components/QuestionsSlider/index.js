@@ -12,10 +12,10 @@ export default function QuestionsSlider({
     <View style={styles.container}>
       <Slider
         style={styles.slider}
-        minimumValue={1}
+        minimumValue={0}
         minimumTrackTintColor="#fff"
         maximumTrackTintColor="#fff"
-        maximumValue={questionsLength + 1}
+        maximumValue={questionsLength}
         step={1}
         value={numberOfQuestions}
         onValueChange={setNumberOfQuestions}

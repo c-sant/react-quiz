@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import commonStyles from "../../styles";
 
 const componentStyles = StyleSheet.create({
-    question: {
+    result: {
       backgroundColor: "#1B2136",
       height: "60%",
       width: "90%",
