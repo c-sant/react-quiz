@@ -7,6 +7,7 @@ import { deleteTheme, getThemes, updateTheme } from "../../services/Database";
 import styles from "./styles";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Toast from "react-native-toast-message";
+import { validateFields } from "../../utils/utils";
 
 export default function ThemeScreen({ navigation }) {
   const [themes, setThemes] = useState(null);
@@ -27,14 +28,16 @@ export default function ThemeScreen({ navigation }) {
   async function onHandleUpdateTheme(){
     let array = [...themes]
     try{
+        validateFields('Nome', array[currentTheme].name)
         await updateTheme(array[currentTheme])
         await fetchThemes()
     }catch(err){
         Toast.show({
             type: 'error',
             text1: 'Falha!',
-            text2: 'Não foi possível atualizar o tema!'
+            text2: err
           })
+          return
     }
 
     Toast.show({
