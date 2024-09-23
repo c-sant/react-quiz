@@ -30,7 +30,12 @@ export default function GameScreen({ route, navigation }) {
 
   return  (
   <View style={styles.container}>
-    <Bar progress={progress} width={200}/>
+    <View style={styles.alignProgressBar}>
+      <View>
+        <Bar progress={progress} width={200}/>
+      </View>
+      <Text style={styles.fontColor}>{currentNumber}/{gameData.length}</Text>
+    </View>
     <Text style={styles.title}>Pergunta</Text>
     <View style={styles.question}>
       <QuestionGame question={currentQuestion} onResponse={(data) => onReceiveMessage(data)}/>

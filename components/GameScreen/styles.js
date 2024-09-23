@@ -18,6 +18,14 @@ const componentStyles = StyleSheet.create({
         justifyContent: 'space-between',
         marginRight: 10,
         marginLeft: 10
+    },
+    fontColor: {
+        color: "#fff"
+    },
+    alignProgressBar: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10
     }
   });
 
