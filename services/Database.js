@@ -77,6 +77,32 @@ export async function insertTheme(theme) {
   return await executeQuery(query, query_params);
 }
 
+export async function deleteTheme(theme_id) {
+  var query = "DELETE FROM themes WHERE id = ?";
+  var query_params = [theme_id];
+
+  return await executeQuery(query, query_params);
+}
+
+export async function updateTheme(theme) {
+  var query = `
+    UPDATE themes
+    SET
+      name = ?
+    WHERE id = ?
+  `;
+  var query_params = [
+    theme.name,
+    theme.id
+  ];
+  try{
+    return await executeQuery(query, query_params);
+  }catch(err){
+    return err
+  }
+
+}
+
 export async function getQuestions() {
   var query = `
     SELECT

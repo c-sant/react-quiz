@@ -37,6 +37,10 @@ export default function HomeScreen({ navigation }) {
           text={"PERGUNTAS"}
           onPress={() => navigation.navigate("Questions")}
         />
+        <FlowButton
+          text={"TEMAS"}
+          onPress={() => navigation.navigate("Theme")}
+        />
       </View>
     </View>
   );

@@ -10,6 +10,7 @@ import GameScreen from "./components/GameScreen";
 import Toast from 'react-native-toast-message';
 import LoadingComponent from "./components/LoadingComponent";
 import ResultScreen from "./components/ResultScreen";
+import ThemeScreen from "./components/ThemeScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name="Loading" component={LoadingComponent}/>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Questions" component={QuestionsScreen} />
+        <Stack.Screen name="Theme" component={ThemeScreen} />
         <Stack.Screen
           name="QuestionRegistration"
           component={QuestionRegistrationScreen}

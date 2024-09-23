@@ -34,6 +34,7 @@ export default function ResultScreen({ route, navigation }) {
   <View style={styles.container}>
     <Text style={styles.title}>Resultados</Text>
     <Text style={styles.title}>Acertos/Total: {hits}/{numberQuestion}</Text>
+    <Text style={styles.title}>% de Acerto: {(hits/numberQuestion) * 100}</Text>
     <View style={styles.result}>
         <ScrollView style={styles.scrollableView} contentContainerStyle={styles.contentContainer}>
         {
