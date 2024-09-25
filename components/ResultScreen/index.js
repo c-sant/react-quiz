@@ -18,8 +18,8 @@ export default function ResultScreen({ route, navigation }) {
   }, [responses])
 
   useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => {return true})
-    return () => BackHandler.removeEventListener('hardwareBackPress')
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {return true})
+    return () => backHandler.remove()
   }, [])
 
   function onLoad(data){
@@ -39,8 +39,8 @@ export default function ResultScreen({ route, navigation }) {
   return  (
   <View style={styles.container}>
     <Text style={styles.title}>Resultados</Text>
-    <Text style={styles.title}>Acertos/Total: {hits}/{numberQuestion}</Text>
-    <Text style={styles.title}>% de Acerto: {((hits/numberQuestion) * 100).toFixed(2)}</Text>
+    <Text style={styles.subTitle}>Acertos/Total: {hits}/{numberQuestion}</Text>
+    <Text style={styles.subTitle}>% de Acerto: {((hits/numberQuestion) * 100).toFixed(2)}</Text>
     <View style={styles.result}>
         <ScrollView style={styles.scrollableView} contentContainerStyle={styles.contentContainer}>
         {

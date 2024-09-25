@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import FlowButton from "../FlowButton";
 import { Bar } from "react-native-progress";
 import { BackHandler } from "react-native";
+import Toast from "react-native-toast-message";
 
 export default function GameScreen({ route, navigation }) {
   const { gameData } = route.params
@@ -18,8 +19,8 @@ export default function GameScreen({ route, navigation }) {
   }, [currentNumber])
 
   useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => {return true})
-    return () => BackHandler.removeEventListener('hardwareBackPress')
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {return true})
+    return () => backHandler.remove()
   }, [])
 
   function calculateProgress(){
@@ -31,7 +32,30 @@ export default function GameScreen({ route, navigation }) {
   }
 
   function onSubmit(){
+    if(!currentQuestion["choice"]){
+      Toast.show({
+        type: 'info',
+        text1: 'Não é possível avançar',
+        text2: 'A pergunta tem que ser respondida'
+      })
+      return;
+    }
+
     navigation.navigate("Result", {responses: gameData})
+  }
+
+
+  function onNext(){
+    if(!currentQuestion["choice"]){
+      Toast.show({
+        type: 'info',
+        text1: 'Não é possível avançar',
+        text2: 'A pergunta tem que ser respondida'
+      })
+      return;
+    }
+
+    setCurrentNumber(currentNumber + 1)
   }
 
   return  (
@@ -79,7 +103,7 @@ export default function GameScreen({ route, navigation }) {
       (
         <FlowButton
           text="Avançar"
-          onPress={() => setCurrentNumber(currentNumber + 1)}
+          onPress={onNext}
         ></FlowButton>
       )
 

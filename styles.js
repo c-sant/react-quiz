@@ -12,6 +12,11 @@ const commonStyles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 40,
   },
+  subTitle: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 30,
+  }
 });
 
 export default commonStyles;
